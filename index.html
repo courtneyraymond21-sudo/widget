@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="UTF-8" />
-  <title>Science Fact of the Day</title>
+  <title>Neuroscience History Fact of the Day</title>
   <style>
     body {
       font-family: Menlo, monospace;
@@ -32,22 +32,64 @@
 <body>
 
 <div class="card">
-  <div class="title">🔬 Science Fact of the Day</div>
+  <div class="title">📜 Neuroscience History Fact of the Day</div>
   <div id="fact">Loading...</div>
 </div>
 
 <script>
-  async function loadFact() {
-    try {
-      const res = await fetch("https://uselessfacts.jsph.pl/api/v2/facts/random?language=en");
-      const data = await res.json();
-      document.getElementById("fact").innerText = data.text;
-    } catch (err) {
-      document.getElementById("fact").innerText = "Could not load a fact.";
-    }
+  const facts = [
+    "In 1906, Santiago Ramón y Cajal and Camillo Golgi shared the Nobel Prize — despite fiercely opposing theories about how neurons were organized.",
+    "Cajal's drawings of neurons are still considered some of the most accurate and beautiful scientific illustrations ever made.",
+    "In 1791, Luigi Galvani discovered 'animal electricity' when a frog’s leg twitched after being touched by a metal scalpel.",
+    "Hermann von Helmholtz was the first to measure the speed of nerve conduction in the 1840s — surprising everyone by showing it was far slower than electricity.",
+    "Paul Broca identified the brain region for speech production in 1861 by studying patients with expressive aphasia.",
+    "Karl Wernicke later identified a separate region for language comprehension, creating the foundation of classical language models.",
+    "In 1937, James Papez proposed one of the first major theories of emotion, now known as the Papez circuit.",
+    "The term 'synapse' was coined by Charles Sherrington in 1897 to describe the junction between neurons.",
+    "In the 1950s, Hodgkin and Huxley used the giant squid axon to model the action potential — work that earned them the 1963 Nobel Prize.",
+    "Wilder Penfield mapped the sensory and motor cortices using electrical stimulation during neurosurgery, producing the famous homunculus.",
+    "The first EEG recording was made in 1924 by Hans Berger, who discovered the alpha rhythm.",
+    "Phineas Gage’s 1848 accident became one of the first cases showing that specific brain regions control personality.",
+    "Hubel and Wiesel’s 1959 cat experiments revealed the columnar organization of visual cortex and earned them the 1981 Nobel Prize.",
+    "The neuron doctrine — that neurons are discrete cells — replaced the reticular theory thanks largely to Cajal’s work.",
+    "The discovery of place cells by John O’Keefe in 1971 revolutionized our understanding of spatial memory.",
+    "Eric Kandel’s studies of Aplysia in the 1960s uncovered the molecular basis of learning and memory.",
+    "Roger Sperry's split-brain experiments in the 1960s demonstrated hemispheric specialization.",
+    "Patricia Goldman-Rakic’s work in the 1970s established the prefrontal cortex as the center of working memory.",
+    "Rita Levi-Montalcini discovered nerve growth factor during World War II and went on to win the 1986 Nobel Prize.",
+    "In 1878, Richard Caton demonstrated electrical activity in the mammalian brain using crude electrodes.",
+    "The discovery of neurotransmitters began with Otto Loewi’s 1921 frog heart experiment, which first showed chemical signaling between nerves.",
+    "'Hebbian learning' — the idea that neurons that fire together wire together — was first proposed by Donald Hebb in 1949.",
+    "In 1986, Masao Ito showed that the cerebellum plays a key role in motor learning through plasticity at Purkinje cell synapses.",
+    "The concept of a 'connectome' originated in the 1970s but only gained traction after the complete mapping of C. elegans’ nervous system in 1986.",
+    "Golgi’s silver staining technique, developed in 1873, allowed scientists to visualize individual neurons for the first time.",
+    "In 1881, David Ferrier used electrical stimulation to map motor areas in primates, influencing the earliest neurosurgeries.",
+    "In 1976, the discovery of endorphins revealed that the brain produces its own opiate-like chemicals.",
+    "The first fMRI study was published in 1991, marking a major advance in noninvasive brain imaging.",
+    "In 1935, Walter Freeman developed the transorbital lobotomy, a procedure later abandoned due to widespread ethical concerns.",
+    "The term 'neuroplasticity' entered mainstream neuroscience only in the late 20th century, though early hints came from William James in 1890.",
+    "The concept of critical periods in development was solidified by Hubel and Wiesel’s work on visual deprivation.",
+    "In 1998, adult neurogenesis in the human hippocampus was proven by Jonas Frisén’s lab using carbon-dating techniques.",
+    "Donald O. Hebb’s 1949 book 'The Organization of Behavior' is considered a founding text of cognitive neuroscience.",
+    "Electroconvulsive therapy (ECT) was first introduced in 1938 and remains one of the most effective treatments for severe depression.",
+    "The idea of the 'triune brain' was proposed by Paul MacLean in the 1960s to describe evolutionary layers of brain organization.",
+    "In 1973, Timothy Bliss and Terje Lømo discovered long-term potentiation (LTP) in the hippocampus.",
+    "H.M.’s memory deficits, studied by Brenda Milner, provided the first clear evidence for multiple memory systems.",
+    "The first brain-machine interface experiment was performed in 1969 by Eberhard Fetz, who trained a monkey to control a needle with neurons.",
+    "In 2005, the Blue Brain Project began the effort to digitally simulate an entire mammalian brain."
+  ];
+
+  function loadDailyFact() {
+    const today = new Date();
+    const dayOfYear = Math.floor(
+      (today - new Date(today.getFullYear(), 0, 0)) / 86400000
+    );
+
+    const factIndex = dayOfYear % facts.length;
+    document.getElementById("fact").innerText = facts[factIndex];
   }
 
-  loadFact();
+  loadDailyFact();
 </script>
 
 </body>
